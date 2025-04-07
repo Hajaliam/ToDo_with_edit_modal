@@ -1,0 +1,338 @@
+@font-face {
+    font-family: "Shabnam";
+    src: url(font/Shabnam-FD.woff2) type(".woff2");
+}
+  select {
+    /* padding: 10px; */
+    font-size: 16px;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    /* width: 200px; */
+  }
+
+  option {
+    /* padding: 10px; */
+    background-color: #ffffff;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #0056b3;
+  }
+
+
+  
+*{
+    font-family: "Shabnam";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+h1 ,h6{
+  margin-bottom: 1rem;
+}
+h6{
+  opacity: .8;
+  padding-bottom: .2rem;
+}
+body{
+    margin-top: 2rem ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+.input_section{
+    width: 72vw;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    width: 100%;
+    background-color: #d7d7d7;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    height: 8vh;
+    padding: 0 1rem ;
+
+}
+input:focus {
+    border: 1px solid #9b9b9b;
+    border-radius: 5px;
+    outline: none;
+    color : #0c0c0c
+}
+.btns{
+    width: 100%;
+    height: 8vh;
+    
+    display: flex;
+    justify-content: space-around;
+    gap: .5rem;
+}
+.add{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    gap: 1rem;
+    padding: 1rem;
+}
+.clear{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    gap: 1rem;
+    padding: 1rem;
+}
+button{
+    width: 100%;
+}
+.tables{
+    width: 72vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: row;
+    gap : 1rem ;
+
+    /* background-color: black; */
+}
+.status{
+    width: 100% ; 
+    height: 100%;
+    /* background-color:#d7d7d7; */
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    
+}
+h2{
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 5px solid #9b9b9b;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 3rem;
+    border: 1px solid #adb5bd;
+    border-radius: 4px;
+}
+i{
+    transition: all 0.2s ease;
+}
+.fa-check:hover{
+    color: #70E000;
+    /* color: #198754; */
+}
+.fa-check-double:hover{
+    color: #70E000;
+}
+    
+.fa-eraser:hover{
+    color: #bf0603;
+    /* color: #DC3545; */
+}
+.icons{
+    display: flex;
+    gap: 1rem;
+}
+/* /////////////////////////////modal/////////// */
+.modal{
+    position: fixed;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background: rgba(255, 255, 255, 0.1); /* رنگ پس‌زمینه شفاف */
+    backdrop-filter: blur(10px);          /* مات‌کننده اصلی */
+    -webkit-backdrop-filter: blur(10px);  /* برای سافاری */
+    z-index: 9999;
+    transition: all 300ms ease;
+}
+.editModal{
+  position: relative;
+    width: 40vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* background: #fafafa; */
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    /* ////// */
+    background: #fafafa; /* پس‌زمینه تیره برای نمایش بهتر نئون */
+    padding: 2rem;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(248, 121, 23, 0.6), 0 0 30px rgba(255, 149, 0, 0.4), 0 0 60px rgba(0, 255, 255, 0.3);
+  }
+.fa-xmark{
+  position: absolute;
+    top: 3vh;
+    left: 3vh;
+    color: rgb(71, 71, 71);
+}
+.fa-xmark:hover{
+  color: #bf0603;
+  transform: scale(1.2);
+}
+.editSpan{
+    color: black;
+  }
+.editBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+.settings{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+label{
+    color: black;
+}
+.radio{
+    font-size: 16px
+}
+.color-select{
+    display: flex;
+    flex-direction: row;
+    flex-basis: 1;
+    gap: .5rem;
+}
+#dropSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    /* width: 100%; */
+    
+}
+select{
+    flex: 2 ;
+}
+/* /////////////////////////////////////ایپوت های رادیو /////// */
+/* مخفی کردن استایل پیش‌فرض مرورگر */
+input[type="radio"] {
+    appearance: none; /* حذف استایل پیش‌فرض */
+    -webkit-appearance: none; /* برای مرورگرهای WebKit */
+    -moz-appearance: none; /* برای فایرفاکس */
+    width: 100%;  /* اندازه رادیو باتن */
+    height: 2rem ; /* اندازه رادیو باتن */
+    border: 1px solid #007bff; /* رنگ حاشیه */
+    background-color: #fff; /* رنگ پس‌زمینه پیش‌فرض */
+    /* position: relative; */
+    box-sizing: border-box;
+    flex: 1 ;
+    transition: all 100ms ease ;
+  }
+  input[type="radio"]:checked{
+    flex: 2;
+  }
+  /* ///////////////دکمه سفید ////////// */
+  #white{
+    background-color: #ffffff ;
+    border: 1px solid #ffffff ;
+    border-color: rgba(0, 0, 0, .5); 
+  }
+  /* زمانی که رادیو باتن انتخاب میشه */
+  #white:checked {
+    background-color: #ffffff;
+    border-width: 1px;
+    border-color: black; 
+  }
+  
+  /* زمانی که موس روی رادیو باتن قرار میگیره */
+ #white:hover {
+    background-color: #f0f0f0; /* رنگ پس‌زمینه در حالت hover */
+    border-color: black; 
+  }
+  /* //////////////دکمه طوسی //////////// */
+  #gray{
+    background-color: #dbdbdb ;
+    border: 1px solid #dbdbdb ;
+    opacity: .5;
+  }
+  #gray:checked {  
+    border-width: 3px;
+    border: 1px solid #999999 ;
+    opacity: 1; 
+  }
+  
+  /* زمانی که موس روی رادیو باتن قرار میگیره */
+ #gray:hover {
+    background-color: #dbdbdb; /* رنگ پس‌زمینه در حالت hover */
+    opacity: 1;
+  }
+  /* ///////////////////////دکمه سبز ////////////// */
+  #green{
+    background-color: #198754 ;
+    border: 1px solid #198754 ;
+    opacity: .7;
+  }
+  #green:checked {  
+    border: 1px solid #198754 ;
+    opacity: 1; 
+  }
+  
+  /* زمانی که موس روی رادیو باتن قرار میگیره */
+ #green:hover {
+    background-color: #198754; /* رنگ پس‌زمینه در حالت hover */
+    opacity: 1;
+  }
+  /* ////////////////////////دکمه قرمز ////////// */
+  #red{
+    background-color: #DC3545 ;
+    border: 1px solid #DC3545 ;
+    opacity: .7;
+  }
+  #red:checked {  
+    border: 1px solid #DC3545 ;
+    opacity: 1; 
+  }
+  
+  /* زمانی که موس روی رادیو باتن قرار میگیره */
+ #red:hover {
+    background-color: #DC3545; /* رنگ پس‌زمینه در حالت hover */
+    opacity: 1;
+  }
+  /* ////////////////////////دکمه آبی ////////// */
+  #blue{
+    background-color: #2b7fff ;
+    border: 1px solid #2b7fff ;
+    opacity: .7;
+  }
+  #blue:checked {  
+    border: 1px solid #2b7fff ;
+    opacity: 1; 
+  }
+  
+  /* زمانی که موس روی رادیو باتن قرار میگیره */
+ #blue:hover {
+    background-color: #2b7fff; /* رنگ پس‌زمینه در حالت hover */
+    opacity: 1;
+  }
+  
+
