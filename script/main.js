@@ -1,7 +1,6 @@
 let j = jQuery.noConflict();
 j("document").ready(function () {
   //////////////فراخوانی از لوکال استوریج API /////////
-  // setlocalStorage()
   getLocalStorage()
   
   ////////////////تعریف کردن متغیر ها ///////////////
@@ -71,7 +70,7 @@ j("document").ready(function () {
   editUpdater();
   //////////////فانکشن اد کردن///////////
   function Add() {
-    let newTodo = j("<div>").addClass("container");
+    let newTodo = j("<div>").addClass("container")
     let span = j("<span>").text(todo.val());
     let iconsSection = j("<div>").addClass("icons");
     let checkIcon = j("<i>").addClass("fa-solid fa-check");
@@ -199,7 +198,6 @@ j("document").ready(function () {
         });
     });
     function yeganeh(e) {
-      // j('input[type="radio"]').on("change",function(){
       defaultColor = j('input[type="radio"]:checked').val();
       j("#editInput").css("backgroundColor", defaultColor);
 
@@ -234,18 +232,25 @@ j("document").ready(function () {
     let notStartedWorks = works.find(".fa-check").closest(".container")
     notStartedWorks.each(function (){
       
-      notStartedWorksArray.push(j(this).find("span").text())
-      
+      notStartedWorksArray.push({
+        text : j(this).find("span").text() ,
+        color : j(this).css("color") ,
+        bgColor : j(this).css("backgroundColor")
+      })
     })
+  
     localStorage.setItem("notStarted",JSON.stringify(notStartedWorksArray))
-
     ////////////////////////////////////////////
     ///////////////////////////////////////////////////
     let inProgressWorksArray = []
     let inProgressWorks = works.find(".fa-check-double").closest(".container")
     inProgressWorks.each(function (){
       
-      inProgressWorksArray.push(j(this).find("span").text())
+      inProgressWorksArray.push({
+        text : j(this).find("span").text() ,
+        color : j(this).css("color") ,
+        bgColor : j(this).css("backgroundColor")
+      })
       
     })
     localStorage.setItem("inProgress",JSON.stringify(inProgressWorksArray))
@@ -256,7 +261,11 @@ j("document").ready(function () {
     let completedWorks = works.find(".icons :first.fa-eraser").closest(".container")
     completedWorks.each(function (){
       
-      completedWorksArray.push(j(this).find("span").text())
+      completedWorksArray.push({
+        text : j(this).find("span").text() ,
+        color : j(this).css("color") ,
+        bgColor : j(this).css("backgroundColor")
+      })
       
     })
     localStorage.setItem("completed",JSON.stringify(completedWorksArray))
@@ -266,10 +275,11 @@ j("document").ready(function () {
   function getLocalStorage(){
     /////////////////////////////////////////////////////
     let notStartedWorks = localStorage.getItem("notStarted")
+
     notStartedWorks = JSON.parse(notStartedWorks)
     for(let work in notStartedWorks){
       let newTodo = j("<div>").addClass("container");
-      let span = j("<span>").text(notStartedWorks[work]);
+      let span = j("<span>").text(notStartedWorks[work].text);
       let iconsSection = j("<div>").addClass("icons");
       let checkIcon = j("<i>").addClass("fa-solid fa-check");
       let delIcon = j("<i>").addClass("fa-solid fa-eraser");
@@ -277,15 +287,15 @@ j("document").ready(function () {
       iconsSection.append(delIcon);
       newTodo.append(span);
       newTodo.append(iconsSection);
-      j(".not-started").append(newTodo);
+      let finalTodo = workColorSet(newTodo , notStartedWorks[work].color, notStartedWorks[work].bgColor)
+      j(".not-started").append(finalTodo);
     }
-    // console.log(typeof(notStartedWorks));
     /////////////////////////////////////////////////////
     let inProgressWorks = localStorage.getItem("inProgress")
     inProgressWorks = JSON.parse(inProgressWorks)
     for(let work in inProgressWorks){
       let newTodo = j("<div>").addClass("container");
-      let span = j("<span>").text(inProgressWorks[work]);
+      let span = j("<span>").text(inProgressWorks[work].text);
       let iconsSection = j("<div>").addClass("icons");
       let checkIcon = j("<i>").addClass("fa-solid fa-check-double");
       let delIcon = j("<i>").addClass("fa-solid fa-eraser");
@@ -293,14 +303,15 @@ j("document").ready(function () {
       iconsSection.append(delIcon);
       newTodo.append(span);
       newTodo.append(iconsSection);
-      j(".in-progress").append(newTodo);
+      let finalTodo = workColorSet(newTodo , inProgressWorks[work].color, inProgressWorks[work].bgColor)
+      j(".in-progress").append(finalTodo);
     }
     /////////////////////////////////////////////////////
     let completedWorks = localStorage.getItem("completed")
     completedWorks = JSON.parse(completedWorks)
     for(let work in completedWorks){
       let newTodo = j("<div>").addClass("container");
-      let span = j("<span>").text(completedWorks[work]);
+      let span = j("<span>").text(completedWorks[work].text);
       let iconsSection = j("<div>").addClass("icons");
       // let checkIcon = j("<i>").addClass("fa-solid fa-check");
       let delIcon = j("<i>").addClass("fa-solid fa-eraser");
@@ -308,7 +319,16 @@ j("document").ready(function () {
       iconsSection.append(delIcon);
       newTodo.append(span);
       newTodo.append(iconsSection);
-      j(".completed").append(newTodo);
+      let finalTodo = workColorSet(newTodo , completedWorks[work].color, completedWorks[work].bgColor)
+      j(".completed").append(finalTodo);
     }
+  }
+  ////////////////////////color functions for loading from LS////////////////
+  function workColorSet(elem , color , bgc){
+      
+    return j(elem).css({
+      "color" : color,
+      "backgroundColor" : bgc
+    })
   }
 });
