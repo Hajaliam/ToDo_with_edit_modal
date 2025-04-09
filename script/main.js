@@ -144,6 +144,7 @@ j("document").ready(function () {
       j(".editBtn")
         .off("click")
         .on("click", function () {
+          yegane_2(item)
           clone = curentWorkObj.clone(true);
           defaultColor = j('input[type="radio"]:checked').val();
           j(clone).css("background-color", defaultColor);
@@ -200,29 +201,38 @@ j("document").ready(function () {
     function yeganeh(e) {
       defaultColor = j('input[type="radio"]:checked').val();
       j("#editInput").css("backgroundColor", defaultColor);
+      if(defaultColor == "#dbdbdb" || defaultColor == "#ffffff"){
+        j("#editInput").css("color", "black");
+      }else{
+        j("#editInput").css("color", "#fff");
+      }
+      // })
+    }
+    function yegane_2(e){
+      defaultColor = j('input[type="radio"]:checked').val();
+
 
       if (defaultColor == "#198754") {
-        j("#editInput").css("color", "#fff");
+        // j("#editInput").css("color", "#fff");
         j(e).css("color", "#fff");
         j(e).css("backgroundColor", defaultColor);
       } else if (defaultColor == "#DC3545") {
-        j("#editInput").css("color", "#fff");
+        // j("#editInput").css("color", "#fff");
         j(e).css("color", "#fff");
         j(e).css("backgroundColor", defaultColor);
       } else if (defaultColor == "#2b7fff") {
-        j("#editInput").css("color", "#fff");
+        // j("#editInput").css("color", "#fff");
         j(e).css("color", "#fff");
         j(e).css("backgroundColor", defaultColor);
       } else if (defaultColor == "#ffffff") {
-        j("#editInput").css("color", "black");
+        // j("#editInput").css("color", "black");
         j(e).css("color", "black");
         j(e).css("backgroundColor", defaultColor);
       } else if (defaultColor == "#dbdbdb") {
-        j("#editInput").css("color", "black");
+        // j("#editInput").css("color", "black");
         j(e).css("color", "black");
         j(e).css("backgroundColor", defaultColor);
       }
-      // })
     }
   }
   function setlocalStorage(){
